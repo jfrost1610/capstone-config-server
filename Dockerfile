@@ -1,5 +1,5 @@
 FROM maven:3.6-jdk-8-alpine as build
-AND ./ app/
+ADD ./ app/
 WORKDIR /app
 RUN mvn install -DskipTests
 
