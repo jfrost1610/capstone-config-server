@@ -6,4 +6,4 @@ RUN mvn install -DskipTests
 FROM openjdk:8-jdk-alpine
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8421
-ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev","app.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev","-Dspring.cloud.config.server.git.username=**${GIT.USERNAME}**","-Dspring.cloud.config.server.git.password=**${GIT.PASSWORD}**","app.jar"]
